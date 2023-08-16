@@ -46,7 +46,17 @@ MIT License
 ? Starting a new project?
 ```
 
-##### Start your project
+### GitHub Cloning
+
+`git clone` will give you the copy of the entire directory of the package. If you do git-clone, paths are not detected and some other parameters are also not configured automatically, so you are requested to edit files and scripts that include these parameters.
+
+###### app.py
+
+###### server.sh
+
+###### tornadod.service
+
+### Daemonization
 
 ```
 sudo mv tornadod.service /etc/systemd/system/
@@ -54,21 +64,9 @@ sudo systemctl daemon-reload
 sudo systemctl enable tornadod --now'
 ```
 
-### GitHub Cloning
+###### Reverse Proxy
 
-## Daemonization
-
-### Reverse Proxy
-
-You may want to open your Tornado web server directly to the public. In that case, set you port 80/443 (or the likes depending on your infra settings) to run the server. However, someone may feel not good to do so like me as WAF may not be applied easily or etc. In that case, you may want to use reverse proxy or CGI/FCGI techniques. Usually DERaC considers performing speed and uses reverse proxy, so this instructin too introduces usages of it with Nginx and OpenLiteSpeed.
-
-#### Nginx
-
-###### WebSocket
-
-#### OpenLiteSpeed
-
-###### WebSocket
+You may want to open your Tornado web server directly to the public. In that case, set you port 80/443 (or the likes depending on your infra settings) to run the server. However, someone may feel not good to do so like me as WAF may not be applied easily or etc. In that case, you may want to use reverse proxy or CGI/FCGI techniques. Usually DERaC considers performing speed and uses reverse proxy.
 
 ## About DERaC
 
