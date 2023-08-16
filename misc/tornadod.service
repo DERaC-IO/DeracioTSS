@@ -1,0 +1,22 @@
+[Unit]
+# Clarify to descrive this service
+Description=Tornado Web Service 
+
+[Service]
+# Full path to your project
+WorkingDirectory=/PATH/TO/YOUR_PROJECT
+
+# Full path to your server startup script
+ExecStart="/PATH/TO/YOUR_PROJECT/server.sh"
+
+Restart=always
+RestartSec=3s
+Type=simple
+
+# User and group names to launch the service
+# Avoid root or equivalent user/group
+User=YOUR_UID
+Group=YOUR_GROUP
+
+[Install]
+WantedBy=multi-user.target
