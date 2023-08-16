@@ -56,14 +56,6 @@ sudo systemctl enable tornadod --now'
 
 ### GitHub Cloning
 
-## New Apps in Project
-
-### New App Script
-
-##### Installation
-
-##### Create new apps
-
 ## Daemonization
 
 ### Reverse Proxy
