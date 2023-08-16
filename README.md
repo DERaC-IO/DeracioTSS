@@ -7,6 +7,15 @@ DeracioTSS is a Tornado/Python startup script. This script is primarily written 
 
 Scripts are coded with intensive care, but please notice issues that bugs and security holes may be found in the future. We are not responsible for any troubles caused by the usage of DeracioTSS. If you found any issues that may affect t the community, please let us know.
 
+##### Donations
+
+This package is open source, but we appreciate donations if you have felt any utility from our code.
+
+| Crypto | Address |
+|---|---|
+| BTC | 3GSGPvNeSv1j9LobjzZWiCL2Vd29rpmyXE |
+| ETH | 0x8928534c8beca7875059edce7afae202836a0d4c |
+
 ## Get Started
 
 ### Startup Script
