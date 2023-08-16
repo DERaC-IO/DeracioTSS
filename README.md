@@ -27,6 +27,10 @@ Scripts are coded with intensive care, but please notice issues that bugs and se
 
 ## Reverse Proxy
 
+### Nginx
+
+### OpenLiteSpeed
+
 ## About DERaC
 
 Decentralized Economy Research & Consulting (DERaC) was founded by Tetsuya (Tedd) Saito, Ph.D. in December 2022 based on his specilties -- network security, mathematical/data science, economics, and 25+ years of experience in web development. DERaC provides services on network security, web development, statistical analysis, mathematical modeling, economic consulting, and web development with several affiliated specialists of each field.
