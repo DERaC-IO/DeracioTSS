@@ -25,11 +25,17 @@ Scripts are coded with intensive care, but please notice issues that bugs and se
 
 ## Daemonization
 
-## Reverse Proxy
+### Reverse Proxy
 
-### Nginx
+You may want to open your Tornado web server directly to the public. In that case, set you port 80/443 (or the likes depending on your infra settings) to run the server. However, someone may feel not good to do so like me as WAF may not be applied easily or etc. In that case, you may want to use reverse proxy or CGI/FCGI techniques. Usually DERaC considers performing speed and uses reverse proxy, so this instructin too introduces usages of it with Nginx and OpenLiteSpeed.
 
-### OpenLiteSpeed
+#### Nginx
+
+###### WebSocket
+
+#### OpenLiteSpeed
+
+###### WebSocket
 
 ## About DERaC
 
