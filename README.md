@@ -58,11 +58,20 @@ MIT License
 
 ### Daemonization
 
+If installation is successful, you are already set to go. Move the service file (`tornadod.service` is default) to the system daemon directory (i.e., `/etc/systemd/system/`) in order for `systemctl` command can recognize the script. Before starting the daemon, don't forget reloading registered systems by `systemctl daemon-reload`. After that you can eventually start the daemonized Tornado application.
+
 ```
 sudo mv tornadod.service /etc/systemd/system/
 sudo systemctl daemon-reload
+sudo systemctl start tornadod
+```
+If you want the Tornado application to start automatically, enable the daemon as follows (`--now` option simultaneously start the daemon after enabling it).
+
+```
 sudo systemctl enable tornadod --now'
 ```
+
+Now you are able to access the served website via the port you have designated, congrats!
 
 ###### Reverse Proxy
 
