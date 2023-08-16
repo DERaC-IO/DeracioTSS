@@ -48,7 +48,7 @@ MIT License
 
 ### GitHub Cloning
 
-`git clone` will give you the copy of the entire directory of the package. If you do git-clone, paths are not detected and some other parameters are also not configured automatically, so you are requested to edit files and scripts that include these parameters. List of parameters are listed as follows.
+`git clone` will give you the copy of the entire directory of the package. If you do git-clone, paths are not detected and some other parameters are also not configured automatically, so you are requested to edit files and scripts manually that include these parameters. List of parameters are listed as follows.
 
 ###### app.py
 
