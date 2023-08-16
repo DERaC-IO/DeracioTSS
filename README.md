@@ -13,7 +13,13 @@ Scripts are coded with intensive care, but please notice issues that bugs and se
 
 ##### Installation
 
-Download or copy'n paste `tss.py` to your server directory that the Tornado project is to be placed. The script requires `questionary` and `subprocess` packages, so install the two with `pip` in your virtual environment.
+Download or copy'n paste `tss.py` to your server directory that the Tornado project is to be placed. For example, `wget` will work like this.
+
+```
+wget https://raw.githubusercontent.com/DERaC-IO/DeracioTSS/f6691d177de800434593cb336f102c1181c73439/tss.py
+```
+
+The script requires `questionary` and `subprocess` packages, so install the two with `pip` in your virtual environment.
 
 ```
 pip install questionary subprocess
