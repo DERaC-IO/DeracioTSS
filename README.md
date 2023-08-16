@@ -48,13 +48,28 @@ MIT License
 
 ### GitHub Cloning
 
-`git clone` will give you the copy of the entire directory of the package. If you do git-clone, paths are not detected and some other parameters are also not configured automatically, so you are requested to edit files and scripts that include these parameters.
+`git clone` will give you the copy of the entire directory of the package. If you do git-clone, paths are not detected and some other parameters are also not configured automatically, so you are requested to edit files and scripts that include these parameters. List of parameters are listed as follows.
 
 ###### app.py
 
+- path to `python`
+- template folder name (`__template__`)
+- static file folder name (`__static__`)
+- port (`__port__`)
+
 ###### server.sh
 
+- `APP_NAME` (descritive app name)
+- `SERVER` (path to `python`)
+- `APP` (python app file)
+
 ###### tornadod.service
+
+- `Description` (clarify service)
+- `WorkingDirectory` (path to server script)
+- `ExecStart` (command starting server script)
+- `User` (launching user name)
+- `Group` (launching group name)
 
 ### Daemonization
 
