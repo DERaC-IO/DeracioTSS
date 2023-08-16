@@ -132,7 +132,7 @@ if __name__ == "__main__":
 <body>
 {% block body %}
 <div class="uk-margin-top uk-text-center">
-    <img src="https://github.com/DERaC-IO/DeracioTSS/blob/2a43aac2a5138902f83d24b38a367b7366aa8548/misc/deractss_logo.png">
+    <img src="https://raw.githubusercontent.com/DERaC-IO/DeracioTSS/2a43aac2a5138902f83d24b38a367b7366aa8548/misc/deractss_logo.png">
     <div class="uk-h1">Congratulations!</div>
     <div class="uk-text-muted">Tornado is now working!</div>
 </div>
