@@ -19,7 +19,7 @@ Download or copy'n paste `tss.py` to your server directory that the Tornado proj
 wget https://raw.githubusercontent.com/DERaC-IO/DeracioTSS/f6691d177de800434593cb336f102c1181c73439/tss.py
 ```
 
-The script requires `questionary` and `subprocess` packages, so install the two with `pip` in your virtual environment.
+If you love `cURL` or `requests`, it's OK. The script requires `questionary` and `subprocess` packages, so install the two with `pip` in your virtual environment.
 
 ```
 pip install questionary subprocess
