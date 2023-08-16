@@ -93,7 +93,7 @@ sudo systemctl start tornadod
 If you want the Tornado application to start automatically, enable the daemon as follows (`--now` option simultaneously start the daemon after enabling it).
 
 ```
-sudo systemctl enable tornadod --now'
+sudo systemctl enable tornadod --now
 ```
 
 Now you are able to access the served website via the port you have designated, congrats!
