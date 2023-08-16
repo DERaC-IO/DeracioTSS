@@ -7,13 +7,48 @@ DeracioTSS is a Tornado/Python startup script. This script is primarily written 
 
 Scripts are coded with intensive care, but please notice issues that bugs and security holes may be found in the future. We are not responsible for any troubles caused by the usage of DeracioTSS. If you found any issues that may affect t the community, please let us know.
 
-## Get Started
+## Getting Started
 
 ### Startup Script
 
 ##### Installation
 
+Download or copy'n paste `tss.py` to your server directory that the Tornado project is to be placed. The script requires `questionary` and `subprocess` packages, so install the two with `pip` in your virtual environment.
+
+```
+pip install questionary subprocess
+```
+
+Now you are ready to start the script with `python` or `python3`.
+
+```
+python tss.py
+```
+
+You will see the startup logo of the program if successfully installed. Please answer questions to generate the following files.
+
+- python app file (default = `app.py`)
+- template index (`index.html`)
+- server startup script (default = `server.sh`)
+- system daemon script (default = `tornadod.service`)
+
+```_____________________________________________________________________
+    _____                                    ______     __       __  
+    /    )                           ,         /      /    )   /    )
+---/----/----__---)__----__----__--------__---/-------\--------\-----
+  /    /   /___) /   ) /   ) /   ' /   /   ) /         \        \    
+_/____/___(___ _/_____(___(_(___ _/___(___/_/______(____/___(____/___                                                                  
+
+Tornado Startup Script v1.0.0
+Copyright (c) 2023 DERaC, LLC.
+MIT License
+
+? Starting a new project?
+```
+
 ##### Start your project
+
+
 
 ### GitHub Cloning
 
