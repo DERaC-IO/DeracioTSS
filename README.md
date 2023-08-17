@@ -117,7 +117,7 @@ Now you are able to access the served website via the port you have designated, 
 
 ![DeracioTSS](/misc/snapshot.png)
 
-###### Reverse Proxy
+##### Reverse Proxy
 
 You may want to open your Tornado web server directly to the public. In that case, set you port 80/443 (or the likes depending on your infra settings) to run the server. However, someone may feel not good to do so like me as WAF may not be applied easily or etc. In that case, you may want to use reverse proxy or CGI/FCGI techniques. Usually DERaC considers performing speed and uses reverse proxy.
 
