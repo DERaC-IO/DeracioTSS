@@ -123,13 +123,17 @@ You may want to open your Tornado web server directly to the public. In that cas
 
 ## Future Roadmap
 
-DeracioTSS tries to enhance development experiences with Tornado. The eventual goal is to build a full-stack package manager for Tornado application. To realize the goal, we may need the followings.
+DeracioTSS tries to enhance development experiences with Tornado. The eventual goal is to build a full-stack package manager for Tornado application. We plant to implement the following functions to realize the goal (the latest version is `1.0`).
 
-- system setting manager
-- routing manager
-- handler class manager
-- system monitor
-- web-based GUI wrapper
+| Function | Version | Ready |
+|:---|:---:|:---:|
+|project setup script|`1.0`|*|
+|settings manager|`1.1`|-|
+|handler setup script|`1.2`|-|
+|routing manager|`2.0`|-|
+|handler class manager|`2.1`|-|
+|system monitor|`2.2`|-|
+|wrapping web app|`3.0`|-|
 
 ##### Donations
 
