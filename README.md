@@ -45,14 +45,12 @@ MIT License
 ? Starting a new project?
 ```
 
-You will see the startup logo of the program if successfully installed. Please answer questions to generate the following files.
+You will see the startup logo of the program if successfully installed. Please answer questions to generate the following files. By default, folders and files are generated as shown below.
 
 - python app file (default = `app.py`)
 - template index (`index.html`)
 - server startup script (default = `server.sh`)
 - system daemon script (default = `tornadod.service`)
-
-By default, folders and files are generated as shown below.
 
 ###### Directory Structure
 ```
