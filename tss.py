@@ -1,5 +1,6 @@
 """
 DeracioTSS -- Tornado Startup Script
+Version 1.0.0 (15 August, 2023)
 Copyright (c) 2023 DERaC, LLC.
 
 ** Donations **
