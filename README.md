@@ -125,15 +125,15 @@ You may want to open your Tornado web server directly to the public. In that cas
 
 DeracioTSS tries to enhance development experiences with Tornado. The eventual goal is to build a full-stack package manager for Tornado application that is friendly even for newbie developers. The package is primarily designed for our affiliates and staffs while it is open to our communities. Following functions are going to be implemented to realize the ultimate goal (the latest version is `1.0`).
 
-| Function | Version | Ready |
-|:---|:---:|:---:|
-|project setup script|`1.0`|*|
-|handler setup script|`1.1`|-|
-|settings managing script|`1.2`|-|
-|routing manager|`2.0`|-|
-|handler class manager|`2.1`|-|
-|system monitor|`2.2`|-|
-|wrapping web app|`3.0`|-|
+| Function | Style | Version | Ready |
+|:---|:---:|:---:|:---:|
+|project setup script|CLI|`1.0`|*|
+|handler setup script|CLI|`1.1`|-|
+|settings managing script|CLI|`1.2`|-|
+|routing manager|GUI/CLI|`2.0`|-|
+|handler class manager|GUI/CLI|`2.1`|-|
+|system monitor|GUI|`3.0`|-|
+|wrapping web app|GUI|`3.1`|-|
 
 ##### Contributions
 
