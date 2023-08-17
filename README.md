@@ -121,18 +121,27 @@ Now you are able to access the served website via the port you have designated, 
 
 You may want to open your Tornado web server directly to the public. In that case, set you port 80/443 (or the likes depending on your infra settings) to run the server. However, someone may feel not good to do so like me as WAF may not be applied easily or etc. In that case, you may want to use reverse proxy or CGI/FCGI techniques. Usually DERaC considers performing speed and uses reverse proxy.
 
-## About DERaC
+## Future Roadmap
 
-Decentralized Economy Research & Consulting (DERaC) was founded by Tetsuya (Tedd) Saito, Ph.D. in December 2022 based on his specilties -- network security, mathematical/data science, economics, and 25+ years of experience in web development. DERaC provides services on network security, web development, statistical analysis, mathematical modeling, economic consulting, and web development with several affiliated specialists of each field.
+DeracioTSS tries to enhance development experiences with Tornado. The eventual goal is to build a full-stack package manager for Tornado application. To realize the goal, we may need the followings.
 
-Occasional job opportunities are posted on our website at https://derac.io (en) or https://derac.jp (ja), but applications from talented specialists/developers that are capable of Python, R, statistics, economics/econometrics, applied mathematics, machine learning, and ethical hackers are always welcome.
+- system setting manager
+- routing manager
+- handler class manager
+- system monitor
+- web-based GUI wrapper
 
 ##### Donations
 
-This package is open source, but we appreciate donations if you have felt any utility from our code.
+This package is open source, but we appreciate donations if you have felt any utility from our code and/or future development plan. Your supports help further enhancements/developments, thanks!
 
 | Crypto | Address |
 |:---:|:---:|
 | BTC | ![BTC](/misc/btc_bitflyer_qr.png)<br>3GSGPvNeSv1j9LobjzZWiCL2Vd29rpmyXE |
 | ETH | ![ETH](/misc/eth_bitflyer_qr.png)<br>0x8928534c8beca7875059edce7afae202836a0d4c |
 
+## About DERaC
+
+Decentralized Economy Research & Consulting (DERaC) was founded by Tetsuya (Tedd) Saito, Ph.D. in December 2022 based on his specilties -- network security, mathematical/data science, economics, and 25+ years of experience in web development. DERaC provides services on network security, web development, statistical analysis, mathematical modeling, economic consulting, and web development with several affiliated specialists of each field.
+
+Occasional job opportunities are posted on our website at https://derac.io (en) or https://derac.jp (ja), but applications from talented specialists/developers that are capable of Python, R, statistics, economics/econometrics, applied mathematics, machine learning, and ethical hackers are always welcome.
