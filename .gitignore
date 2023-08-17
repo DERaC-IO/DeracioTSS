@@ -1,6 +1,9 @@
 # Old Versions
 versions/
 
+# Misc files
+misc/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
