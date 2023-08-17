@@ -135,6 +135,10 @@ DeracioTSS tries to enhance development experiences with Tornado. The eventual g
 |system monitor|`2.2`|-|
 |wrapping web app|`3.0`|-|
 
+##### Contributions
+
+As an open source package, any kinds of contributions are open and welcome!
+
 ##### Donations
 
 This package is open source, but we appreciate donations if you have felt any utility from our code and/or future development plan. Your donations help further enhancements/developments, thanks!
