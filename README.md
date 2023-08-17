@@ -31,13 +31,6 @@ Now you are ready to start the script with `python` or `python3`.
 python tss.py
 ```
 
-You will see the startup logo of the program if successfully installed. Please answer questions to generate the following files.
-
-- python app file (default = `app.py`)
-- template index (`index.html`)
-- server startup script (default = `server.sh`)
-- system daemon script (default = `tornadod.service`)
-
 ```_____________________________________________________________________
     _____                                    ______     __       __  
     /    )                           ,         /      /    )   /    )
@@ -50,6 +43,32 @@ Copyright (c) 2023 DERaC, LLC.
 MIT License
 
 ? Starting a new project?
+```
+
+You will see the startup logo of the program if successfully installed. Please answer questions to generate the following files.
+
+- python app file (default = `app.py`)
+- template index (`index.html`)
+- server startup script (default = `server.sh`)
+- system daemon script (default = `tornadod.service`)
+
+By default, folders and files are generated as shown below.
+
+###### Directory Structure
+```
+<PROJECR_ROOT>
+    │
+    ├─ app.py
+    │
+    ├─ server.sh
+    │
+    ├─ tornadod.service
+    │
+    ├─ templates
+    │    │
+    │    └─ index.html
+    │ 
+    └─ static
 ```
 
 ### GitHub Cloning
