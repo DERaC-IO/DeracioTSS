@@ -128,8 +128,8 @@ DeracioTSS tries to enhance development experiences with Tornado. The eventual g
 | Function | Version | Ready |
 |:---|:---:|:---:|
 |project setup script|`1.0`|*|
-|settings manager|`1.1`|-|
-|handler setup script|`1.2`|-|
+|handler setup script|`1.1`|-|
+|settings managing script|`1.2`|-|
 |routing manager|`2.0`|-|
 |handler class manager|`2.1`|-|
 |system monitor|`2.2`|-|
