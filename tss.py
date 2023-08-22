@@ -1,17 +1,15 @@
 """
 DeracioTSS -- Tornado Startup Script
-Version 1.0.0 (15 August, 2023)
 Copyright (c) 2023 DERaC, LLC.
 
-** Donations **
 BTC: 3GSGPvNeSv1j9LobjzZWiCL2Vd29rpmyXE
 ETH: 0x8928534c8beca7875059edce7afae202836a0d4c
 """
-#! python3
 # -*- coding: utf-8 -*-
-import os, sys, re, subprocess, questionary
+import os, sys, re, json, subprocess, questionary
 
 def main():
+    version = '1.0.1'
     banner = """
 _____________________________________________________________________
     _____                                    ______     __       __  
@@ -21,11 +19,12 @@ _____________________________________________________________________
 _/____/___(___ _/_____(___(_(___ _/___(___/_/______(____/___(____/___                                                                  
 """
     print(banner)
-    print('Tornado Startup Script v1.0.0')
+    print(f'Tornado Startup Script v{version}')
     print('Copyright (c) 2023 DERaC, LLC.')
     print('MIT License\n')
     if questionary.confirm('Starting a new project?').ask():
-        name = questionary.text(f'Let me know the project name').ask()
+        name = "app"
+        name = questionary.text(f'Let me know the project name', default=name).ask()
         if name == '':
             print('\nProject name cannot be blank...\n')
             exit()
@@ -33,12 +32,13 @@ _/____/___(___ _/_____(___(_(___ _/___(___/_/______(____/___(____/___
         if questionary.confirm(f'Create {name}?').ask():
             template = 'templates'
             static = 'static'
+            port = '8000'
             app_name = f'{name}.py'
             if not questionary.confirm(f'Use default template folder name ({template})?').ask():
                 template = questionary.text(f'Template folder name').ask()
             if not questionary.confirm(f'Use default static file folder name ({static})?').ask():
                 static = questionary.text(f'Static file folder name').ask()
-            port = questionary.text(f'Which port will you use?', default='8000').ask()
+            port = questionary.text(f'Which port will you use?', default=port).ask()
             if not questionary.confirm(f'Use default app file name ({app_name})?').ask():
                 app_name = questionary.text(f'App file name').ask()
             python_path = subprocess.run("which python3", shell=True, stdout=subprocess.PIPE, encoding='utf-8')
@@ -57,13 +57,14 @@ import tornado.ioloop, tornado.web
 import os, re, json, threading
 
 # Define fundamental parameters for the service
-# These params can be alternatively in, i.e., settings.py
-"""
-                script += f'__template__ = "{template}"\n'
-                script += f'__static__ = "{static}"\n'
-                script += f'__port__ = {port}\n\n'
+# These params are in settings.py generated from files in settings.d
 
-                script += """
+from settings import config
+
+__template__ = config.get("template")
+__static__ = config.get("static")
+__port__ = config.get("port")
+
 # Classes are separately stored in external files
 # Follow the structure rule of each project
 class MainHandler(tornado.web.RequestHandler):
@@ -99,6 +100,44 @@ if __name__ == "__main__":
                     exit()
             else:
                 print(f'{app_name} already exists...')
+            
+            print('\nCreating settings files...')
+            
+            if not os.path.isdir('settings.d'):
+                os.mkdir('settings.d')
+            exist = os.path.isfile('settings.py')
+            if exist:
+                overwrite = questionary.confirm(f'Overwrite existing settings.py?', default=False).ask()
+            if not exist or overwrite:
+                config = {
+                    'template': template,
+                    'static': static,
+                    'port': int(port),
+                }
+                with open('settings.d/config.json', 'w') as f:
+                    f.write(json.dumps(config))
+                    f.close()
+                
+                files = os.listdir("settings.d")
+                script = "# Settings generated from JSON files (identified by .json) in settings.d folders\n\n"
+                for file in files:
+                    name = file.split('.')
+                    if name[1] == 'json':
+                        script += name[0] + " = {\n"
+                        with open(f"settings.d/{file}") as f:
+                            entry = f.read()
+                            if entry:
+                                entry = json.loads(entry)
+                                for key, value in entry.items():
+                                    if type(value) is str:
+                                        script += '\t"{}": "{}",\n'.format(key, value)
+                                    else:
+                                        script += '\t"{}": {},\n'.format(key, value)
+                            f.close()
+                        script += "}\n"
+                    with open('settings.py', 'w') as f:
+                        f.write(script)
+                        f.close()
 
             print('\nCreating template folder...')
 
