@@ -62,6 +62,12 @@ You will see the startup logo of the program if successfully installed. Please a
     │
     ├─ tornadod.service
     │
+    ├─ settings.py
+    │
+    ├─ settings.d
+    │    │
+    │    └─ config.json
+    │
     ├─ templates
     │    │
     │    └─ index.html
