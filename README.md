@@ -62,9 +62,9 @@ You will see the startup logo of the program if successfully installed. Please a
     │
     ├─ tornadod.service
     │
-    ├─ settings.py
+    ├─ settings.py (added in 1.0.1+)
     │
-    ├─ settings.d
+    ├─ settings.d  (added in 1.0.1+)
     │    │
     │    └─ config.json
     │
