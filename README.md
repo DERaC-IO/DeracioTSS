@@ -83,12 +83,22 @@ git clone https://github.com/DERaC-IO/DeracioTSS.git
 
 `git clone` will give you the copy of the entire directory of the package. If you do git-clone, paths are not detected and some other parameters are also not configured automatically, so you are requested to edit files and scripts manually that include these parameters. List of parameters are listed as follows.
 
-###### app.py
+###### app.py (v1.0.0)
 
 - path to `python`
 - template folder name (`__template__`)
 - static file folder name (`__static__`)
 - port (`__port__`)
+
+###### app.py (v1.0.1+)
+
+- path to `python`
+
+###### settings.py and settings.d/config.json (v1.0.1+)
+
+- path to `templates`
+- path to `static`
+- port number
 
 ###### server.sh
 
