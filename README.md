@@ -102,7 +102,7 @@ options:
 The fastest option is the following that enables you to launch the Tornado server in seconds!
 
 ```
-tss.py -q -o -a
+python tss.py -q -o -a
 ```
 
 After installation, do `sh server.sh` on the command line.
