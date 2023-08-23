@@ -4,6 +4,20 @@
 
 ## Version 1.0.x
 
+### 1.0.3
+
+#### Implemented Enhancement(s)
+
+- None
+
+#### Fixued Bug(s)
+
+1. An error to generate the shell script path while quick-starting has been fixed
+
+#### Housekeeping Change(s)
+
+- None
+
 ### 1.0.2
 
 #### Implemented Enhancement(s)
