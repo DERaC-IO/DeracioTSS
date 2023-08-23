@@ -390,7 +390,7 @@ if __name__ == "__main__":
                 ).ask()
                 self.server_name = questionary.text(f'Script name', default=self.server_name).ask()
                 self.mode = questionary.text('File permission mode', default = self.mode).ask()
-            shell_path = subprocess.run(f"which {self.shell}", shell=True, stdout=subprocess.PIPE, encoding='utf-8')
+            shell_path = subprocess.run(f"which {self.shell}", shell=True, stdout=subprocess.PIPE, encoding='utf-8').stdout.strip()
             if not self.args.quickstart:
                 shell_path = questionary.path(f'Path to {self.shell}', default=shell_path.stdout.strip()).ask()
             exist = os.path.isfile(self.server_name)
