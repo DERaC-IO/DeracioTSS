@@ -68,7 +68,9 @@ You will see the startup logo of the program if successfully installed. Please a
     │
     ├─ settings.d  (added in 1.0.1+)
     │    │
-    │    └─ config.json
+    │    ├─ config.json
+    │    │
+    │    └─ handler.json  (added in 1.0.2+)
     │
     ├─ templates
     │    │
@@ -76,6 +78,34 @@ You will see the startup logo of the program if successfully installed. Please a
     │ 
     └─ static
 ```
+
+#### CLI Options (v1.0.2+)
+
+CLI command has options whose descriptions are available with `-h` or (`--help`) option:
+
+```
+usage: tss.py [-h] [-q] [-o] [-a] [-n NAME] [-d DOMAIN] [-p PORT]
+
+options:
+  -h, --help            show this help message and exit
+  -q, --quickstart      quick start with default params
+  -o, --overwrite       overwrite all directories/folders
+  -a, --all             generate all files
+  -n NAME, --name NAME  application name (default = app)
+  -d DOMAIN, --domain DOMAIN
+                        port number (default = localhost)
+  -p PORT, --port PORT  port number (default = 8000)
+```
+
+##### Quick-Start
+
+The fastest option is the following that enables you to launch the Tornado server in seconds!
+
+```
+tss.py -q -o -a
+```
+
+After installation, do `sh server.sh` on the command line.
 
 ### GitHub Cloning
 
