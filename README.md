@@ -149,8 +149,8 @@ DeracioTSS tries to enhance development experiences with Tornado. The eventual g
 |handler (app) setup script|CLI|`1.1`|Working|
 |settings managing script|CLI|`1.2`|Working|
 |integrations with alembic/sqlalchemy|CLI|`1.3`|Working|
-|routing manager|GUI/CLI|`2.0`|-|
-|handler class manager|GUI/CLI|`2.1`|-|
+|routing manager|GUI/CLI|`2.0`|Working|
+|handler class manager|GUI/CLI|`2.1`|Working|
 |system monitor|GUI|`3.0`|-|
 |wrapping web app|GUI|`3.1`|-|
 
