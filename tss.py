@@ -38,7 +38,7 @@ _/____/___(___ _/_____(___(_(___ _/___(___/_/______(____/___(____/___
         self.domain = 'localhost'
         self.port = '8000'
         self.encoding = 'utf-8'
-        self.python_path = subprocess.run("which python3", shell=True, stdout=subprocess.PIPE, encoding=self.encoding)
+        self.python_path = subprocess.run("which python3", shell=True, stdout=subprocess.PIPE, encoding=self.encoding).stdout.strip()
         self.script_header = f'#!{self.python_path}\n'
         self.script_header += f'# -*- coding: {self.encoding} -*-\n'
         # Handler
@@ -392,7 +392,7 @@ if __name__ == "__main__":
                 self.mode = questionary.text('File permission mode', default = self.mode).ask()
             shell_path = subprocess.run(f"which {self.shell}", shell=True, stdout=subprocess.PIPE, encoding='utf-8').stdout.strip()
             if not self.args.quickstart:
-                shell_path = questionary.path(f'Path to {self.shell}', default=shell_path.stdout.strip()).ask()
+                shell_path = questionary.path(f'Path to {self.shell}', default=shell_path).ask()
             exist = os.path.isfile(self.server_name)
             overwrite = self.args.overwrite
             if exist and not overwrite:
