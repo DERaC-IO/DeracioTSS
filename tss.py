@@ -13,7 +13,7 @@ class DeracioTSS:
         # Opening banner
         self.title = 'Tornado Startup Script'
         self.copy = 'Copyright (c) 2023 DERaC, LLC.'
-        self.version = '1.0.2'
+        self.version = '1.0.3'
         self.license = 'MIT License'
         self.banner = """
 _____________________________________________________________________
