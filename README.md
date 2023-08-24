@@ -29,7 +29,6 @@ DeracioTSS is a Tornado/Python startup script. This script is primarily written 
    ---------------
    9) Stop/Start Server
    0) Quit
-
 ```
 
 ##### Caveat Emptor
