@@ -2,6 +2,27 @@
 
 # Change Log
 
+## Version 1.1.x
+
+### 1.1.0
+
+#### Implemented Enhancement(s)
+
+1. Routing/handler CLI manager
+2. Settings CLI manager
+3. System health checker (primitive)
+4. Server stop/start switch
+
+#### Fixued Bug(s)
+
+- None
+
+#### Housekeeping Change(s)
+
+1. Opening menu
+2. Much faster quick-starter options
+3. Rationalizing questionaries
+
 ## Version 1.0.x
 
 ### 1.0.3
