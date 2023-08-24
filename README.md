@@ -12,6 +12,26 @@ DeracioTSS is a Tornado/Python startup script. This script is primarily written 
 - Settings Configurations (1.1.0+)
 - Server Watcher (1.1.0+)
 
+###### Main Menu of the CLI App
+
+```
+   --- Project ---
+ » 1) Health Check
+   2) New Project
+   --- Handler ---
+   3) List Handlers
+   4) Rouitng
+   5) New Handler
+   6) Delete Handler
+   --- Setting ---
+   7) Show Settings
+   8) Configure
+   ---------------
+   9) Stop/Start Server
+   0) Quit
+
+```
+
 ##### Caveat Emptor
 
 Scripts are coded with intensive care, but please notice issues that bugs and security holes may be found in the future. We are not responsible for any troubles caused by the usage of DeracioTSS. If you found any issues that may affect t the community, please let us know.
