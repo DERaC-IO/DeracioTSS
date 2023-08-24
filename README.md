@@ -82,7 +82,7 @@ You will see the startup logo of the program if successfully installed. Please a
 
 ###### Directory Structure
 ```
-<PROJECR_ROOT>
+<PROJECT_ROOT>
     │
     ├─ app.py
     │
