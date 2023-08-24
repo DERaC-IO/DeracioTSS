@@ -216,9 +216,7 @@ As an open source package, any kinds of contributions are open and welcome!
 
 ##### Donations
 
-This package is open source, but we appreciate donations if you have felt any utility from our code and/or future development plan. Your donations help further enhancements/developments, thanks!
-
-[PayPal](https://paypal.me/deracjp)
+This package is open source, but we appreciate donations if you have felt any utility from our code and/or future development plan. Your donations via [PayPal](https://paypal.me/deracjp) or cryptos help further enhancements/developments, thanks!
 
 | Crypto | Address |
 |:---:|:---:|
