@@ -1,6 +1,6 @@
 ![DeracioTSS](/misc/deractss_logo.png)
 
-Latest Version: 1.0.3 (August 23, 2023)
+Latest Version: 1.1.0 (August 24, 2023)
 
 # Instructions
 DeracioTSS is a Tornado/Python startup script. This script is primarily written for developers and affiliates of DERaC, but it is also open to the public under the [MIT Licence](/LICENSE). The change log is available at [CHANGELOG](/CHANGELOG.md) with some detailed discussions in [Issues](https://github.com/DERaC-IO/DeracioTSS/issues).
@@ -176,9 +176,9 @@ DeracioTSS tries to enhance development experiences with Tornado. The eventual g
 | Function | Style | Version | Status |
 |:---|:---:|:---:|:---:|
 |project setup script|CLI|`1.0`|Ready|
-|handler (app) setup script|CLI|`1.1`|Working|
-|settings managing script|CLI|`1.2`|Working|
-|integrations with alembic/sqlalchemy|CLI|`1.3`|Working|
+|handler (app) setup script|CLI|`1.1`|Ready|
+|settings managing script|CLI|`1.2` -> `1.1`|Ready|
+|integrations with alembic/sqlalchemy|CLI|`1.3` -> `1.2`|Working|
 |routing manager|GUI/CLI|`2.0`|Working|
 |handler class manager|GUI/CLI|`2.1`|Working|
 |system monitor|GUI|`3.0`|-|
