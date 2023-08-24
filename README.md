@@ -171,7 +171,7 @@ You may want to open your Tornado web server directly to the public. In that cas
 
 ## Future Roadmap
 
-DeracioTSS tries to enhance development experiences with Tornado. The eventual goal is to build a full-stack package manager for Tornado application that is friendly even for newbie developers. The package is primarily designed for our affiliates and staffs while it is open to our communities. Following functions are going to be implemented to realize the ultimate goal (the latest version is `1.0`). Please watch [CHANGELOG](/CHANGELOG.md) for updates.
+DeracioTSS tries to enhance development experiences with Tornado. The eventual goal is to build a full-stack package manager for Tornado application that is friendly even for newbie developers. The package is primarily designed for our affiliates and staffs while it is open to our communities. Following functions are going to be implemented to realize the ultimate goal (the latest version is `1.1`). Please watch [CHANGELOG](/CHANGELOG.md) for updates.
 
 | Function | Style | Version | Status |
 |:---|:---:|:---:|:---:|
