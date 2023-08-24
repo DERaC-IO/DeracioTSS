@@ -2,6 +2,7 @@
 DeracioTSS -- Tornado Startup Script
 Copyright (c) 2023 DERaC, LLC.
 
+PayPal: https://paypal.me/deracjp
 BTC: 3GSGPvNeSv1j9LobjzZWiCL2Vd29rpmyXE
 ETH: 0x8928534c8beca7875059edce7afae202836a0d4c
 """
