@@ -218,6 +218,8 @@ As an open source package, any kinds of contributions are open and welcome!
 
 This package is open source, but we appreciate donations if you have felt any utility from our code and/or future development plan. Your donations help further enhancements/developments, thanks!
 
+[PayPal](https://paypal.me/deracjp)
+
 | Crypto | Address |
 |:---:|:---:|
 | BTC | ![BTC](/misc/btc_bitflyer_qr.png)<br>3GSGPvNeSv1j9LobjzZWiCL2Vd29rpmyXE |
