@@ -5,6 +5,13 @@ Latest Version: 1.1.0 (August 24, 2023)
 # Instructions
 DeracioTSS is a Tornado/Python startup script. This script is primarily written for developers and affiliates of DERaC, but it is also open to the public under the [MIT Licence](/LICENSE). The change log is available at [CHANGELOG](/CHANGELOG.md) with some detailed discussions in [Issues](https://github.com/DERaC-IO/DeracioTSS/issues).
 
+### Functions
+
+- Quick Startup/Daemonization
+- Routing/Handler Management (1.1.0+)
+- Settings Configurations (1.1.0+)
+- Server Watcher (1.1.0+)
+
 ##### Caveat Emptor
 
 Scripts are coded with intensive care, but please notice issues that bugs and security holes may be found in the future. We are not responsible for any troubles caused by the usage of DeracioTSS. If you found any issues that may affect t the community, please let us know.
