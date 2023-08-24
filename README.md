@@ -67,11 +67,11 @@ python tss.py
   /    /   /___) /   ) /   ) /   ' /   /   ) /         \        \    
 _/____/___(___ _/_____(___(_(___ _/___(___/_/______(____/___(____/___                                                                  
 
-Tornado Startup Script v1.0.0
+Tornado Startup Script v1.1.0
 Copyright (c) 2023 DERaC, LLC.
 MIT License
 
-? Starting a new project?
+Server is active at http://localhost:8000
 ```
 
 You will see the startup logo of the program if successfully installed. Please answer questions to generate the following files. By default, folders and files are generated as shown below.
