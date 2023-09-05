@@ -7,11 +7,24 @@ BTC: 3GSGPvNeSv1j9LobjzZWiCL2Vd29rpmyXE
 ETH: 0x8928534c8beca7875059edce7afae202836a0d4c
 """
 # -*- coding: utf-8 -*-
-import os, argparse, re, json, random, time, hashlib, subprocess, questionary, threading
-from questionary import Choice, Separator
+import os, argparse, re, json, random, time, datetime, hashlib, base64, subprocess, questionary, threading, requests
+from questionary import Choice, Separator, Validator, ValidationError
+
+
+class validateInteger(Validator):
+    def validate(self, input):
+        try:
+            int(input.text) > 0
+        except:
+            raise ValidationError(
+                message=f"Port number '{input.text}' is not valid integer",
+                cursor_position=len(input.text)
+            )
 
 class DeracioTSS:
     def __init__(self):
+        # Init classe(s)
+        self.validateInteger = validateInteger
         # Opening banner
         self.title = 'Tornado Startup Script'
         self.copy = 'Copyright (c) 2023 DERaC, LLC.'
@@ -33,6 +46,32 @@ _/____/___(___ _/_____(___(_(___ _/___(___/_/______(____/___(____/___
         self.parser.add_argument("-n", "--name", help="application name (default = app)")
         self.parser.add_argument("-d", "--domain", help="port number (default = localhost)")
         self.parser.add_argument("-p", "--port", help="port number (default = 8000)")
+        # Settings
+        self.settings = 'settings'
+        self.settingd = f'{self.settings}.d'
+        self.paramconf = f'{self.settingd}/config.json'
+        self.handlerconf = f'{self.settingd}/handlers.json'
+        self.admuserconf = f'{self.settingd}/admuser.json'
+        # Torms
+        self.tormsconf = f'{self.settingd}/torms.json'
+        self.torms = False
+        if os.path.isfile(self.tormsconf):
+            with open(self.tormsconf) as f:
+                torms = f.read()
+                f.close()
+            self.torms = torms.strip() != ''
+            if self.torms:
+                self.torms = json.loads(torms)
+        self.abouttorms = 'About Torms'
+        self.installtorms = 'Installation'
+        self.registertorms = 'Registration'
+        self.configtorms = 'Configure Torms'
+        if not self.torms:
+            self.managetorms = self.installtorms
+        elif not self.torms.get('lic'):
+            self.managetorms = self.registertorms
+        else:
+            self.managetorms = self.configtorms
         # Main Menu
         self.newproject = 'New Project'
         self.projecthealth = 'Health Check'
@@ -42,7 +81,12 @@ _/____/___(___ _/_____(___(_(___ _/___(___/_/______(____/___(____/___
         self.managerouting = 'Rouitng'
         self.showsettings = 'Show Settings'
         self.configuresettings = 'Configure'
+        self.adminusers = 'List Accounts'
+        self.editadminuser = 'Edit Account'
+        self.newadminuser = 'New Admin'
+        self.dropadminuser = 'Drop Admin'
         self.serverstatus = 'Stop/Start Server'
+        self.about = 'About'
         self.quit = 'Quit'
         self.mainmenu = [
             Separator("--- Project ---"),
@@ -56,8 +100,16 @@ _/____/___(___ _/_____(___(_(___ _/___(___/_/______(____/___(____/___
             Separator("--- Setting ---"),
             self.showsettings,
             self.configuresettings,
+            Separator("---  Admin  ---"),
+            self.adminusers,
+            self.editadminuser,
+            self.newadminuser,
+            Separator("---  Torms  ---"),
+            self.managetorms,
+            self.abouttorms,
             Separator("---------------"),
             self.serverstatus,
+            self.about,
             self.quit,
         ]
         # Parameters
@@ -81,10 +133,6 @@ _/____/___(___ _/_____(___(_(___ _/___(___/_/______(____/___(____/___
         self.script_header += f'# -*- coding: {self.encoding} -*-\n'
         # Handler
         self.handler = 'MainHandler'
-        self.settings = 'settings'
-        self.settingd = f'{self.settings}.d'
-        self.paramconf = f'{self.settingd}/config.json'
-        self.handlerconf = f'{self.settingd}/handlers.json'
         self.path = '/'
         self.view = 'view'
         self.model = 'model'
@@ -99,9 +147,10 @@ _/____/___(___ _/_____(___(_(___ _/___(___/_/______(____/___(____/___
         self.user = subprocess.run("whoami", shell=True, stdout=subprocess.PIPE, encoding=self.encoding).stdout.strip()
         self.group = subprocess.run("id -g -n", shell=True, stdout=subprocess.PIPE, encoding=self.encoding).stdout.strip()
         # Donations
+        self.paypal = 'https://paypal.me/deracjp'
         self.btcaddr = '3GSGPvNeSv1j9LobjzZWiCL2Vd29rpmyXE'
         self.ethaddr = '0x8928534c8beca7875059edce7afae202836a0d4c'
-        self.donation = 'Donations are welcome!'
+        self.donation = 'Donations are welcome in either PayPal or Crypto!'
         # Misc messages
         self.bye = 'bye...'
         self.goback = 'Go back'
@@ -118,6 +167,7 @@ _/____/___(___ _/_____(___(_(___ _/___(___/_/______(____/___(____/___
         self.PURPLE    = '\033[35m'
         self.CYAN      = '\033[36m'
         self.WHITE     = '\033[37m'
+        self.DEFAULT   = '\033[39m'
         # Decors
         self.END       = '\033[0m'
         self.BOLD      = '\033[1m'
@@ -151,6 +201,7 @@ _/____/___(___ _/_____(___(_(___ _/___(___/_/______(____/___(____/___
 
     def exit(self):
         print(self.BOLD + f'\n{self.donation}\n' + self.END)
+        print(f'PayPal: {self.paypal}')
         print(f'BTC: {self.btcaddr}')
         print(f'ETH: {self.ethaddr}\n')
         print(f'{self.bye}\n')
@@ -161,10 +212,10 @@ _/____/___(___ _/_____(___(_(___ _/___(___/_/______(____/___(____/___
 
     def createProject(self):
         if not self.args.quickstart:
-            self.name = questionary.text(f'Project name', default = self.name).ask()
-        if self.name == '':
-            print(self.RED + '\nProject name cannot be blank...\n' + self.END)
-            exit()
+            self.name = questionary.text(
+                f'Project name', default = self.name,
+                validate=lambda text: True if len(text) > 0 else "App name cannot be empty"
+            ).ask()
         self.name = re.sub('\s', '_', self.name)
         print(self.BOLD + f'\nStart creating new project [{self.name}]...\n' + self.END)
         self.generatingApp(self.args.overwrite)
@@ -175,15 +226,42 @@ _/____/___(___ _/_____(___(_(___ _/___(___/_/______(____/___(____/___
         self.generateServerScript(self.args.overwrite)
         self.generateDaemonScript(self.args.overwrite)
 
-
     def generatingApp(self, overwrite = False):
         self.app_name = f'{self.name}.py'
         if not self.args.quickstart:
-            self.template = questionary.text(f'Template folder name', default = self.template).ask()
-            self.static = questionary.text(f'Static file folder name', default = self.static).ask()
-            self.port = questionary.text(f'Which port will you use?', default = self.port).ask()
-            self.app_name = questionary.text(f'App file name', default = self.app_name).ask()
-            self.python_path = questionary.path(f'Path to python3', default = self.python_path).ask()
+            self.template = questionary.text(
+                'Template folder name', default = self.template,
+                validate=lambda text: True if len(text) > 0 else "Template folder name cannot be empty"
+            ).ask()
+            self.static = questionary.text(
+                'Static file folder name', default = self.static,
+                validate=lambda text: True if len(text) > 0 else "Static file folder name cannot be empty"
+            ).ask()
+            self.port = int(questionary.text(
+                'Which port will you use?', default = str(self.port),
+                validate=self.validateInteger
+            ).ask())
+            self.app_name = questionary.text(
+                'App file name', default = self.app_name,
+                validate=lambda text: True if len(text) > 0 else "App file name cannot be empty (ending with .py is recommended)"
+            ).ask()
+            valid = False
+            count = 0
+            while not valid:
+                if count > 4:
+                    print(self.RED + self.BOLD + '\nToo many retries...')
+                    print('User automatically detected path: ' + self.python_path + self.END)
+                    return
+                python_path = questionary.path(
+                    'Path to python(3)', default = self.python_path,
+                ).ask()
+                if os.path.isfile(python_path):
+                    self.python_path = python_path
+                    valid = True
+                else:
+                    print(self.YELLOW + self.BOLD + '\nInvalid path to python(3)')
+                    print(self.YELLOW + self.BOLD + '(hint: hit tab key)\n' + self.END)
+                count = count + 1
     
         exist = os.path.isfile(self.app_name)
         if exist and not overwrite:
@@ -264,7 +342,7 @@ if __name__ == "__main__":
                 self.error(e)
         else:
             if not overwrite:
-                overwrite = questionary.confirm(f'Overwrite existing {self.handler}?').ask()
+                overwrite = questionary.confirm(f'Overwrite existing {self.handler}?', default=False).ask()
         if not exist or overwrite:
             try:
                 if not os.path.isdir(self.settingd):
@@ -714,6 +792,7 @@ WantedBy=multi-user.target
 
     def loadHandlers(self):
         self.classifyHandlers()
+        status = False
         if os.path.isfile(self.handlerconf):
             with open(self.handlerconf) as f:
                 self.handlers = f.read()
@@ -740,10 +819,8 @@ WantedBy=multi-user.target
                 status = True
             else:
                 message = self.RED + '\nHandler is empty...' + self.END
-                status = False
         else:
             message = self.RED + '\nHandler does not exist...' + self.END
-            status = False
         return status, message
 
     def deleteHandler(self):
@@ -875,8 +952,187 @@ WantedBy=multi-user.target
         print('Tornado is ready to work with you now!')
         print('Don\'t forget to "pip install tornado"')
 
+class DeracioAdmin(DeracioTSS):
+    def __init__(self):
+        super().__init__()
+        self.title = 'DeracioAdmin'
+
+    def loadAdmin(self):
+        admusers = dict()
+        try:
+            if os.path.isfile(self.admuserconf):
+                with open(self.admuserconf) as f:
+                    admusers = f.read()
+                    f.close()
+                    if admusers.strip() != '':
+                        admusers = json.loads(admusers)
+                        status = True
+                    else:
+                        status = None
+                        admusers = f'{self.YELLOW}\nNo admin account is registered\n{self.END}'
+        except Exception as e:
+            status = False
+            admusers = e
+        return status, admusers
+
+    def listAdmin(self):
+        status, admusers = self.loadAdmin()
+        if not status:
+            return print(admusers)
+        print(f'{self.BOLD}\nAdmin Accounts{self.END}')
+        print('-'*32)
+        for key, value in admusers.items():
+            name = value.get('name')
+            created_at = datetime.datetime.fromtimestamp(int(value.get('registered_at')))
+            last_login = value.get('login_at', '--')
+            if last_login != '--':
+                last_login = datetime.datetime.fromtimestamp(int(value.get('login_at')))
+            print(f'{self.BOLD}{name}{self.END} ({key})')
+            print(f'Last Login: {last_login}')
+            print(f'Created at: {created_at}')
+            print('-'*32)
+        print(self.BOLD + self.YELLOW + str(len(admusers)) + self.END + ' admin accounts')
+
+    def addAdmin(self):
+        status, admusers = self.loadAdmin()
+        if status == False:
+            return print(admusers)
+        elif status is None:
+            admusers = dict()
+        valid = False
+        while not valid:
+            rand = str(random.randint(0, 9999))
+            n = 4 - len(rand)
+            rand = '0'*n + rand
+            uid = f"admin{rand}"
+            valid = not uid in admusers
+        uid = questionary.text(
+            'New Admin ID', default=uid,
+            validate=lambda text: True if len(text) > 7 else "ID length must be more than 8"
+        ).ask()
+        name = questionary.text(
+            f'Nickname for {uid}', default="Deracio"
+        ).ask()
+        status, hash = self.generateAuthHash(uid)
+        if not status:
+            return print(hash)
+        if not os.path.isdir(self.settingd):
+            os.mkdir(self.settingd)
+        try:
+            admusers[uid] = {'name': name, 'hash': hash, 'role': 'admin', 'registered_at': time.time()}
+            with open(self.admuserconf, "w") as f:
+                f.write(json.dumps(admusers))
+                f.close()
+            return print(f'\n{name} ({uid}) is added successfully!')
+        except Exception as e:
+            return self.error(e)
+
+    def editAdmin(self):
+        status, admusers = self.loadAdmin()
+        if not status:
+            return print(admusers)
+        options = list()
+        for key, value in admusers.items():
+            name = value.get('name')
+            options.append(Choice(f'{key} ({name})', key))
+        options.append(Choice(self.quit, False))
+        uid = questionary.select('Admin account', options).ask()
+        if not uid:
+            return print(f'{self.YELLOW}\nCancelled\n{self.END}')
+        user = admusers.get(uid)
+        name = user.get('name')
+        self.nickname = 'Nickname'
+        self.password = 'Password'
+        self.delete = 'Delete'
+        action = questionary.select(
+            f'Edit {uid}',
+            [self.nickname, self.password, self.delete]
+        ).ask()
+        if action == self.nickname:
+            user['name'] = questionary.text(f'Nickname for {uid}', default = name).ask()
+            admusers[uid] = user
+        elif action == self.password:
+            status, hash = self.generateAuthHash(uid)
+            if not status:
+                return print(hash)
+            user['hash'] = hash
+            admusers[uid] = user
+        elif action == self.delete:
+            if questionary.confirm(f'Delete {uid} ({name})', default=False).ask():
+                del admusers[uid]
+        try:
+            with open(self.admuserconf, "w") as f:
+                f.write(json.dumps(admusers))
+                f.close()
+            return print(f'{self.GREEN}\n{uid} ({name}) is successfully updated!\n{self.END}')
+        except Exception as e:
+            return print(e)
+
+    def generateAuthHash(self, uid):
+        password = questionary.password(
+            'New Password',
+            validate=lambda text: True if len(text) > 7 else "Password length must be more than 8"
+        ).ask()
+        confirm = False
+        count = 0
+        while not confirm:
+            if count > 2:
+                return False, f'{self.RED}\nToo many retries...\n{self.END}'
+            confirm = password == questionary.password('Confirm Password').ask()
+            count = count + 1
+        dat = uid + password
+        return True, hashlib.sha256(dat.encode()).hexdigest()
+
+class TormsAdmin(DeracioTSS):
+    def __init__(self):
+        super().__init__()
+        # Georgia11
+        self.tormsbanner = """
+MMP""MM""YMM                                       
+P'   MM   `7                                       
+     MM  ,pW"Wq.`7Mb,od8 `7MMpMMMb.pMMMb.  ,pP"Ybd 
+     MM 6W'   `Wb MM' "'   MM    MM    MM  8I   `" 
+     MM 8M     M8 MM       MM    MM    MM  `YMMMa. 
+     MM YA.   ,A9 MM       MM    MM    MM  L.   I8 
+   .JMML.`Ybmd9'.JMML.   .JMML  JMML  JMML.M9mmmP' 
+"""
+        self.is_email = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+        self.torms_url = 'https://api.torms.net/register'
+        self.headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json; charset=utf-8',
+        }
+
+    def start(self, banner = True):
+        if banner:
+            print(self.tormsbanner)
+        if self.managetorms == self.installtorms:
+            if questionary.confirm('Install Torms server?').ask():
+                if not questionary.confirm('Do you have your access code?').ask():
+                    if questionary.confirm('Do you wish to get the code now?').ask():
+                        email = questionary.text(
+                            'Email address',
+                            validate=lambda text: True if re.fullmatch(self.is_email, text) else "Invalid email address"
+                        ).ask()
+                        data = json.dumps({'email': email})
+                        response = requests.post(self.torms_url, headers=self.headers, json=data).text
+                        print(response)
+                        if response.get('email') == email:
+                            print(f'{self.GREEN}{self.BOLD}\nAn automated email has been sent to {email}.')
+                            print(f'Please follow the instruction in the email, thanks!{self.END}')
+                            print('\n(Please try again if you don\'t get the email in few minutes)\n')
+                        else:
+                            print(f'{self.RED}\nSystem error occured... Please retry again after few minutes, thanks!\n{self.END}')
+                    else:
+                        return print(f'{self.BOLD}\nPlease access{self.END} {self.UNDERLINE}https://torms.derac.io/code{self.END} {self.BOLD}for the code, thanks!{self.END}\n')
+                code = questionary.text('Access code').ask()
+                data = json.dumps({'email': email, 'code': code})
+                response = json.loads(requests.post(self.torms_url, headers=self.headers, json=data).text)
+                
 def __main__(banner = True):
-    tss = DeracioTSS()
+    tss    = DeracioTSS()
+    tssadm = DeracioAdmin()
+    torms = TormsAdmin()
     start = tss.start(banner)
     if start == tss.newproject:
         tss.createProject()
@@ -916,9 +1172,25 @@ def __main__(banner = True):
         return __main__(banner = False)
     elif start == tss.configuresettings:
         tss.manageSettings()
+        print()
+        return __main__(banner = False)
+    elif start == tss.adminusers:
+        tssadm.listAdmin()
+        print()
+        return __main__(banner = False)
+    elif start == tss.newadminuser:
+        tssadm.addAdmin()
+        print()
+        return __main__(banner = False)
+    elif start == tss.editadminuser:
+        tssadm.editAdmin()
+        print()
+        return __main__(banner = False)
     elif start == tss.serverstatus:
         tss.manageServer()
         return __main__(banner = False)
+    elif start == tss.managetorms:
+        torms.start()
     tss.exit()
 
 if __name__=='__main__':
