@@ -4,6 +4,20 @@
 
 ## Version 1.1.x
 
+### 1.1.1
+
+#### Implemented Enhancement(s)
+
+- None
+
+#### Fixued Bug(s)
+
+- Error is fixed when no handler is registered in `DeracioTSS.health()` ([Issue #6](https://github.com/DERaC-IO/DeracioTSS/issues/6))
+
+#### Housekeeping Change(s)
+
+- None
+
 ### 1.1.0
 
 #### Implemented Enhancement(s)
