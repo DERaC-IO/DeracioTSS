@@ -1,6 +1,6 @@
 ![DeracioTSS](/misc/deractss_logo.png)
 
-Latest Version: 1.1.0 (August 24, 2023)
+Latest Version: 1.1.1 (September 5, 2023)
 
 ![GitHub](https://img.shields.io/github/license/DERaC-IO/DeracioTSS)
 ![GitHub top language](https://img.shields.io/github/languages/top/DERaC-IO/DeracioTSS)
