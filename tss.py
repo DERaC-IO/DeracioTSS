@@ -740,8 +740,10 @@ WantedBy=multi-user.target
                 status = True
             else:
                 message = self.RED + '\nHandler is empty...' + self.END
+                status = False
         else:
             message = self.RED + '\nHandler does not exist...' + self.END
+            status = False
         return status, message
 
     def deleteHandler(self):
