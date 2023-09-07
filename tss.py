@@ -970,6 +970,9 @@ class DeracioAdmin(DeracioTSS):
                     else:
                         status = None
                         admusers = f'{self.YELLOW}\nNo admin account is registered\n{self.END}'
+            else:
+                status = False
+                admusers = f'{self.YELLOW}\nAdmin users configuration file does not exist.\n{self.END}'
         except Exception as e:
             status = False
             admusers = e
