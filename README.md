@@ -68,7 +68,7 @@ pip install questionary
 Now you are ready to start the script with `python` or `python3`.
 
 ```
-python torms.py
+python -m torms
 ```
 
 ```_____________________________________________________________________
