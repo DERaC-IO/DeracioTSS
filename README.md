@@ -45,10 +45,18 @@ Scripts are coded with intensive care, but please notice issues that bugs and se
 
 ##### Installation
 
-Download or copy'n paste `tss.py` to your server directory that the Tornado project is to be placed. For example, `wget` will work like this.
+###### Installation with pip
 
 ```
-wget https://raw.githubusercontent.com/DERaC-IO/DeracioTSS/f6691d177de800434593cb336f102c1181c73439/tss.py
+pip install torms
+```
+
+###### Install manually
+
+Download or copy'n paste `torms.py` to your server directory that the Tornado project is to be placed. For example, `wget` will work like this.
+
+```
+wget https://raw.githubusercontent.com/DERaC-IO/DeracioTSS/f6691d177de800434593cb336f102c1181c73439/torms.py
 ```
 
 If you love `cURL` or `requests`, it's OK. The script requires the `questionary` package, so install it with `pip` in your virtual environment.
@@ -60,7 +68,7 @@ pip install questionary
 Now you are ready to start the script with `python` or `python3`.
 
 ```
-python tss.py
+python torms.py
 ```
 
 ```_____________________________________________________________________
