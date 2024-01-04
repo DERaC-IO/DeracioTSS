@@ -75,6 +75,12 @@ Now you are ready to start the script with `python` or `python3`.
 python -m torms
 ```
 
+Or in downloaded folder
+
+```
+python torms.py
+```
+
 ```_____________________________________________________________________
     _____                                    ______     __       __  
     /    )                           ,         /      /    )   /    )
@@ -144,7 +150,7 @@ options:
 The fastest option is the following that enables you to launch the Tornado server in seconds!
 
 ```
-python tss.py -q -o -a
+python torms.py -q -o -a
 ```
 
 After installation, do `sh server.sh` on the command line.
